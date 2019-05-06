@@ -75,7 +75,10 @@ class _MyHomePageState extends State<MyHomePage> {
               },
             ),
             RandomWordsWidget(),
-            Echo(text: 'Hello Flutter',backgroundColor: Colors.lightBlue,)
+            Echo(
+              text: 'Hello Flutter',
+              backgroundColor: Colors.lightBlue,
+            )
           ],
         ),
       ),
@@ -134,7 +137,8 @@ class Echo extends StatelessWidget {
   final String text;
   final Color backgroundColor;
 
-  const Echo({Key key, @required this.text, this.backgroundColor}) : super(key: key);
+  const Echo({Key key, @required this.text, this.backgroundColor})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -148,21 +152,79 @@ class Echo extends StatelessWidget {
   }
 }
 
-class SecondCounter extends StatefulWidget{
+class SecondCounter extends StatefulWidget {
+  final int initValue;
+
+  SecondCounter({Key key, this.initValue: 0}) : super(key: key);
+
   @override
-  _SecondCounterState createState()=> new _SecondCounterState();
+  _SecondCounterState createState() => new _SecondCounterState();
 }
-class _SecondCounterState extends State<SecondCounter>{
-  int _counter = 0;
-  void increment(){
+
+class _SecondCounterState extends State<SecondCounter> {
+  int _counter;
+
+  void increment() {
     setState(() {
       _counter++;
     });
   }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _counter = widget.initValue;
+    print('init');
+  }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return null;
+    return Scaffold(
+      body: Center(
+        child: FlatButton(
+            onPressed: () => setState(() => ++_counter),
+            child: Text('$_counter')),
+      ),
+    );
+  }
+  @override
+  void didUpdateWidget(SecondCounter oldWidget) {
+    // TODO: implement didUpdateWidget
+    super.didUpdateWidget(oldWidget);
+    print('didUpdate');
+  }
+  @override
+  void deactivate() {
+    // TODO: implement deactivate
+    super.deactivate();
+    print('deactive');
+  }
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    print('dispose');
+  }
+  @override
+  void reassemble() {
+    // TODO: implement reassemble
+    super.reassemble();
+    print('reassemble');
+  }
+  @override
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
+    print('didChangeDependencies');
+  }
+}
+class SecondRoute extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return SecondCounter();
   }
 
 }
