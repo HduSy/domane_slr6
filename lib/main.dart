@@ -58,26 +58,26 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             Text(
               'You have clicked the add button',
-              style: TextStyle(fontSize: 18),
+              style: TextStyle(fontSize: 22,color: Colors.lightBlue),
             ),
             Text(
               '$_counter',
-              style: Theme.of(context).textTheme.display1,
+              style: TextStyle(fontSize: 36, color: Colors.lightBlue),
             ),
             FlatButton(
-              child: Text('Open a new Route'),
-              textColor: Colors.lightBlue,
+              child: Text('Open the Second Route.',style: TextStyle(fontSize: 22,color: Colors.lightBlue),),
+//              textColor: Colors.lightBlue,
               onPressed: () {
                 Navigator.of(context)
                     .push(MaterialPageRoute(builder: (context) {
-                  return NewRoute();
+                  return SecondPage();
                 }));
               },
             ),
             RandomWordsWidget(),
             Echo(
               text: 'Hello Flutter',
-              backgroundColor: Colors.lightBlue,
+              backgroundColor: Colors.lightBlue[100],
             )
           ],
         ),
@@ -96,22 +96,30 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-class NewRoute extends StatelessWidget {
+class SecondPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'New Route',
+          'Second Route',
           style: TextStyle(color: Colors.white),
         ),
+        backgroundColor: Colors.green,
       ),
       body: Center(
-        child: Text(
-          'This is a new route.',
-          style: Theme.of(context).textTheme.display1,
-        ),
+        child: FlatButton(
+            onPressed: () => {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) {
+                    return SecondCounter();
+                  }))
+                },
+            child: Text(
+              'Open the Third Route.',
+              style: TextStyle(fontSize: 22, color: Colors.green),
+            )),
       ),
     );
   }
@@ -119,15 +127,14 @@ class NewRoute extends StatelessWidget {
 
 class RandomWordsWidget extends StatelessWidget {
   final wordPair = WordPair.random();
-
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Padding(
       padding: EdgeInsets.all(8),
       child: Text(
-        wordPair.toString(),
-        style: TextStyle(fontSize: 18),
+        wordPair.asPascalCase.toString(),
+        style: TextStyle(fontSize: 22,color: Colors.lightBlue,),
       ),
     );
   }
@@ -146,7 +153,7 @@ class Echo extends StatelessWidget {
     return Center(
       child: Container(
         color: backgroundColor,
-        child: Text(text),
+        child: Text(text,style: TextStyle(fontSize: 22,color: Colors.lightBlue),),
       ),
     );
   }
@@ -164,7 +171,7 @@ class SecondCounter extends StatefulWidget {
 class _SecondCounterState extends State<SecondCounter> {
   int _counter;
 
-  void increment() {
+  void _incrementCounter() {
     setState(() {
       _counter++;
     });
@@ -182,37 +189,55 @@ class _SecondCounterState extends State<SecondCounter> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
+      appBar: AppBar(title: Text('Third Route',style: TextStyle(color: Colors.white),),backgroundColor: Colors.purple,),
       body: Center(
         child: FlatButton(
-            onPressed: () => setState(() => ++_counter),
-            child: Text('$_counter')),
+            onPressed: () => _incrementCounter(),
+            child: Text(
+              '$_counter',
+              style: TextStyle(fontSize: 36, color: Colors.purple),
+            )),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => _incrementCounter(),
+        child: Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
+        tooltip: 'incrementNum',
+        backgroundColor: Colors.purple,
       ),
     );
   }
+
   @override
   void didUpdateWidget(SecondCounter oldWidget) {
     // TODO: implement didUpdateWidget
     super.didUpdateWidget(oldWidget);
     print('didUpdate');
   }
+
   @override
   void deactivate() {
     // TODO: implement deactivate
     super.deactivate();
     print('deactive');
   }
+
   @override
   void dispose() {
     // TODO: implement dispose
     super.dispose();
     print('dispose');
   }
+
   @override
   void reassemble() {
     // TODO: implement reassemble
     super.reassemble();
     print('reassemble');
   }
+
   @override
   void didChangeDependencies() {
     // TODO: implement didChangeDependencies
@@ -220,11 +245,11 @@ class _SecondCounterState extends State<SecondCounter> {
     print('didChangeDependencies');
   }
 }
-class SecondRoute extends StatelessWidget{
+
+class SecondRoute extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return SecondCounter();
   }
-
 }
