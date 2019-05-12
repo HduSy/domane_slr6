@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:domane_slr6/pages/fourth_page.dart';
-
+import 'package:domane_slr6/pages/tap_box_a.dart';
+import 'package:domane_slr6/pages/tap_box_b.dart';
+import 'package:domane_slr6/pages/tap_box_c.dart';
 // 生命周期示例
 class SecondRoute extends StatelessWidget {
   @override
@@ -116,6 +117,7 @@ class _SecondCounterState extends State<SecondCounter> {
 }
 
 class SecondPage extends StatelessWidget {
+  var active = true;
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -128,17 +130,37 @@ class SecondPage extends StatelessWidget {
         backgroundColor: Colors.green,
       ),
       body: Center(
-        child: FlatButton(
-            onPressed: () => {
+        child: Column(
+          children: <Widget>[
+            FlatButton(
+                onPressed: () => {
                   Navigator.of(context)
                       .push(MaterialPageRoute(builder: (context) {
                     return SecondCounter();
                   }))
                 },
-            child: Text(
-              'Open the Third Route.',
-              style: TextStyle(fontSize: 22, color: Colors.green),
-            )),
+                child: Text(
+                  'Open the Third Route.',
+                  style: TextStyle(fontSize: 22, color: Colors.teal[400]),
+                )),
+            FlatButton(
+              onPressed: ()=>{
+                Navigator.of(context).push(MaterialPageRoute(builder: (context){
+                  return ParentWidgetB();
+                }))
+            },
+              child: Text('Open the taboxB',style: TextStyle(fontSize: 22,color: Colors.teal[500]),),
+            ),
+            FlatButton(
+              onPressed: ()=>{
+                Navigator.of(context).push(MaterialPageRoute(builder: (context){
+                  return ParentWidgetC();
+                }))
+              },
+              child: Text('Open the taboxC',style: TextStyle(fontSize: 22,color: Colors.teal[700]),),
+            )
+          ],
+        )
       ),
     );
   }

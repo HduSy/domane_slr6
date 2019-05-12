@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-// Widget管理自身状态
 
 class FourRoute extends StatefulWidget {
-  FourRoute({Key key}) : super(key: key);
-
   @override
   _FourRoute createState() => _FourRoute();
 }
 
 class _FourRoute extends State<FourRoute> {
+  // Widget管理自身状态
+
   bool _active = false;
 
   void _handleTapBoxChanged() {
@@ -27,7 +26,7 @@ class _FourRoute extends State<FourRoute> {
         height: 200,
         child: Center(
           child: Text(
-            _active ? 'Active' : 'deActive',
+            _active ? 'Active' : 'InActive',
             style: TextStyle(
               fontSize: 32,
               color: Colors.white,
