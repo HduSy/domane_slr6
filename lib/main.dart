@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:domane_slr6/pages/second_page.dart';
 import 'package:domane_slr6/pages/random_word_widget.dart';
 import 'package:domane_slr6/pages/echo.dart';
+import 'package:domane_slr6/pages/image_show.dart';
+import 'package:domane_slr6/pages/checkbox_switch_show.dart';
+import 'package:domane_slr6/pages/focus_node.dart';
+
 void main() => runApp(MyApp());
 
 //应用结构
@@ -57,6 +61,11 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Icon(
+              Icons.fingerprint,
+              color: Colors.green,
+              size: 96,
+            ),
             Text(
               'You have clicked the add button',
               style: TextStyle(fontSize: 22, color: Colors.lightBlue),
@@ -64,6 +73,20 @@ class _MyHomePageState extends State<MyHomePage> {
             Text(
               '$_counter',
               style: TextStyle(fontSize: 36, color: Colors.lightBlue),
+            ),
+            FlatButton(
+              child: Text(
+                'WidgetTest',
+                style: TextStyle(fontSize: 22, color: Colors.lightBlue),
+              ),
+              onPressed: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) {
+//                  return ImageShow();
+//                  return SwitchAndCheckBoxTest();
+                  return FocusNodeTest();
+                }));
+              },
             ),
             FlatButton(
               child: Text(
@@ -78,6 +101,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 }));
               },
             ),
+//            Image.asset(
+//              'images/TKW18_WEB_9x11_TrekWomen.jpg',
+//              width: 200,
+//            ),
+//            Image.network(
+//              'https://avatars2.githubusercontent.com/u/20411648?s=460&v=4',
+//              width: 200,
+//            ),
             RandomWordsWidget(),
             Echo(
               text: 'Hello Flutter',
