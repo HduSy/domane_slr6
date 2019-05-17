@@ -52,7 +52,7 @@ class _Login extends State<Login> {
                       )),
                   obscureText: true,
                   validator: (v) {
-                    return v.trim().length > 5 ? null : '密码长度不得长于5位';
+                    return v.trim().length > 5 ? null : '密码不能少于5位';
                   },
                 ),
                 Padding(

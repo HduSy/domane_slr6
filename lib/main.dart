@@ -5,7 +5,7 @@ import 'package:domane_slr6/pages/echo.dart';
 import 'package:domane_slr6/pages/image_show.dart';
 import 'package:domane_slr6/pages/checkbox_switch_show.dart';
 import 'package:domane_slr6/pages/focus_node.dart';
-
+import 'package:domane_slr6/pages/index.dart';
 void main() => runApp(MyApp());
 
 //应用结构
@@ -73,6 +73,14 @@ class _MyHomePageState extends State<MyHomePage> {
             Text(
               '$_counter',
               style: TextStyle(fontSize: 36, color: Colors.lightBlue),
+            ),
+            RaisedButton(
+              child: Text('前往登录'),
+              onPressed: (){
+                Navigator.of(context).push(MaterialPageRoute(builder: (context){
+                  return Login();
+                }));
+              },
             ),
             FlatButton(
               child: Text(
