@@ -6,6 +6,11 @@ import 'package:domane_slr6/pages/image_show.dart';
 import 'package:domane_slr6/pages/checkbox_switch_show.dart';
 import 'package:domane_slr6/pages/focus_node.dart';
 import 'package:domane_slr6/pages/index.dart';
+import 'package:domane_slr6/pages/flex_layout.dart';
+import 'package:domane_slr6/pages/wrap_layout.dart';
+import 'package:domane_slr6/pages/flow_layout.dart';
+import 'package:domane_slr6/pages/stack_layout.dart';
+
 void main() => runApp(MyApp());
 
 //应用结构
@@ -76,8 +81,9 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             RaisedButton(
               child: Text('前往登录'),
-              onPressed: (){
-                Navigator.of(context).push(MaterialPageRoute(builder: (context){
+              onPressed: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) {
                   return Login();
                 }));
               },
@@ -92,7 +98,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     .push(MaterialPageRoute(builder: (context) {
 //                  return ImageShow();
 //                  return SwitchAndCheckBoxTest();
-                  return FocusNodeTest();
+//                  return FocusNodeTest();
+//                  return FlexLayoutDemoPage();
+//                  return WrapDemoPage();
+//                  return FlowDemoPage();
+                  return StackDemoPage();
                 }));
               },
             ),
